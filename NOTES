@@ -5,3 +5,11 @@ Owner: ShanghaiTimes (@ShanghaiTimes)
 Original Author. Sandro - swfjunkie.com. Seemingly no longer supporting this library.
 
 Why didn't I just Fork the original? I am not sure I wanted to. So stand alone it is.
+
+OK. It's working. You can find me @ShanghaiTimes 12:03pm, 16/09/2013, Using the Twitter REST API v1.1,
+
+I can send a tweet - update to my status.
+
+I'm using Flash Pro CS6, with Flex and AIR sdks, and the rejigged tweetr... sources. I'm not going to turn it into an swc. It works as it is, and and is easy to modify and make additions to.
+
+The first one I'm working on is the authenticate, in addition to the authorize, from the REST API. Which you will find in Tweetr.as, OAuth.as

@@ -13,3 +13,61 @@ I can send a tweet - update to my status.
 I'm using Flash Pro CS6, with Flex and AIR sdks, and the rejigged tweetr... sources. I'm not going to turn it into an swc. It works as it is, and and is easy to modify and make additions to.
 
 The first one I'm working on is the authenticate, in addition to the authorize, from the REST API. Which you will find in Tweetr.as, OAuth.as
+
+
+Flash Pro CS6 Compile notes.
+
+In the Config Constraints tab
+
+CONFIG::AIR   false
+CONFIG::FLEX  false
+CONFIG::WEB   false
+CONFIG::MOBILE  trus
+
+
+In your Classes/yourproject.as....
+
+	import com.shanghaitimes.tweetr.*;
+	import com.shanghaitimes.tweetr.events.*;
+	import com.shanghaitimes.tweetr.Tweetr;
+	import com.shanghaitimes.tweetr.events.TweetEvent;
+	import com.shanghaitimes.tweetr.oauth.*;
+	import com.shanghaitimes.tweetr.oauth.events.*;
+	import com.shanghaitimes.tweetr.oauth.OAuth;
+	import com.shanghaitimes.tweetr.oauth.events.OAuthEvent;
+	
+	
+	
+	
+				event.stopPropagation();
+
+	        // create a new tweetr instance with event handler
+            tweetr = new Tweetr();
+			
+            tweetr.addEventListener(TweetEvent.COMPLETE, handleTweetEvent);
+       
+            // create a new oauth instance with eventhandlers
+            oauth = new OAuth();
+            oauth.addEventListener(OAuthEvent.COMPLETE, handleOAuthEvent);
+            oauth.addEventListener(OAuthEvent.ERROR, handleOAuthEvent);
+            
+            // the required consumer key / secret
+		      	// This first one is the  test bed
+            //oauth.consumerKey = "mdSRx9BmJkPvVaJQ2eRF4g";
+             //oauth.consumerSecret = "sKewtjinUK9GMXQDJd4jrTiM2YrQtazzgcV2NqlnLf4";
+ 
+			//This causes the 32 error if you uncomment it.
+            //serviceHost will only be neccessary on certain calls
+            //tweetr.serviceHost = "labs.swfjunkie.com/tweetr/proxy";
+			
+ 
+            //can be anything really as long as the oauth class will be able
+            // to read the url and the get parameters that twitter will pass to it.
+		      	// However - cancelling the Authrequest comes back to this URL.
+            oauth.callbackURL = "http://quantum-radio.net/proxy/"; 
+
+
+            // make sure we are using the non-pin authentication variant here
+            oauth.pinlessAuth = true;
+    
+
